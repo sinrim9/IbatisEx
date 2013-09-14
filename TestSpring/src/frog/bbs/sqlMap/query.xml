@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN" "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+<sqlMap>
+	<typeAlias type="frog.bbs.domain.Bbs" alias="bbs" />
+	<resultMap id="bbsResult" class="frog.bbs.domain.Bbs">
+		<result property="seq" column="seq" />
+		<result property="name" column="name" />
+		<result property="title" column="title" />
+		<result property="description" column="description" />
+		<result property="writeDate" column="writeDate" />
+		<result property="password" column="password" />
+		<result property="readhit" column="readhit" />
+		<result property="position" column="position" />
+		<result property="userId" column="userId" />
+		<result property="userName" column="userName" />
+		<result property="name" column="name" />
+	</resultMap>
+	
+	<select id="login" resultClass="bbs" parameterClass="bbs">
+		SELECT
+			*
+		FROM
+			USERTB
+		WHERE
+			USERID = #userId:VARCHAR#
+		AND
+			PASSWORD = #password:VARCHAR#
+	</select>
+	
+	<select id="bbsList" resultClass="bbs" parameterClass="bbs">
+		SELECT
+			*
+		FROM
+			BBS
+		ORDER BY
+			BBSORDER DESC
+	</select>
+	
+	<select id="bbsView" resultClass="bbs" parameterClass="String">
+		SELECT
+			*
+		FROM
+			BBS
+		WHERE
+			SEQ = #seq:VARCHAR#
+	</select>
+	
+	<update id="bbsHit" parameterClass="String">
+		UPDATE 
+			BBS 
+		SET 
+			READHIT = (
+						SELECT 
+							READHIT+1 
+						FROM 
+							BBS 
+						WHERE 
+							SEQ=#seq:VARCHAR#
+						) 
+		WHERE SEQ = #seq:VARCHAR#
+	</update>
+	
+	<insert id="bbsWrite" parameterClass="bbs">
+		INSERT 
+			INTO 
+		BBS
+			(
+				SEQ,
+				NAME,
+				TITLE,
+				DESCRIPTION,
+				PASSWRD,
+				WRITEDATE,
+				BBSORDER,
+				POSITION,
+				READHIT,
+				USERID
+			) 
+			VALUES
+			(
+				(SELECT NVL(MAX(SEQ),1)+1 FROM BBS),
+				#name:VARCHAR#,
+				#title:VARHCAR#,
+				#description:VARCHAR#,
+				#password:VARCHAR#,
+				TO_CHAR(SYSDATE,'YYYY-MM-DD'),
+				(SELECT  NVL(MAX(BBSORDER), 0) + 100 FROM BBS),
+				'0',
+				'0',
+				#userId:VARCHAR#
+			)
+	</insert>
+	
+	<select id="bbsPasswordCheck" resultClass="bbs" parameterClass="bbs">
+		SELECT 
+			COUNT(*) 
+		FROM 
+			BBS 
+		WHERE 
+			SEQ = #seq:VARCHAR# 
+		AND 
+			PASSWRD = #password:VARCHAR#
+	</select>
+	
+	<update id="bbsModify" parameterClass="bbs">
+		UPDATE 
+			BBS 
+		SET 
+			TITLE=#title:VARCHAR#, 
+			DESCRIPTION=#description:VARCHAR# 
+		WHERE 
+			SEQ=#seq:VARCHAR#
+	</update>
+	
+	<delete id="bbsDelete" parameterClass="frog.bbs.domain.Bbs">
+		DELETE 
+		FROM 
+			BBS 
+		WHERE 
+			SEQ = #seq:VARCHAR#
+	</delete>
+	
+	<update id="bbsReplySequence" parameterClass="bbs">
+		<![CDATA[
+		UPDATE 
+			BBS 
+		SET 
+			BBSORDER = BBSORDER - 1 
+		WHERE BBSORDER < (SELECT BBSORDER FROM BBS WHERE SEQ = #seq:VARCHAR# AND BBSORDER > (SELECT FLOOR((BBSORDER-1)/1000)*1000 FROM BBS WHERE SEQ = #seq:VARCHAR#))
+		]]>
+	</update>
+	<insert id="bbsReply" parameterClass="bbs">
+		INSERT 
+			INTO 
+		BBS
+			(
+				SEQ,
+				NAME,
+				TITLE,
+				DESCRIPTION,
+				PASSWRD,
+				WRITEDATE,
+				BBSORDER,
+				POSITION,
+				READHIT,
+				USERID
+			) 
+		VALUES
+			(
+				(SELECT NVL(MAX(SEQ),1)+1 FROM BBS),
+				#name:VARCHAR#,
+				#title:VARHCAR#,
+				#description:VARCHAR#,
+				#password:VARCHAR#,
+				TO_CHAR(SYSDATE,'YYYY-MM-DD'),
+				(SELECT BBSORDER-1 FROM BBS WHERE SEQ = #seq:VARCHAR#),
+				(SELECT POSITION+1 FROM BBS WHERE SEQ = #seq:VARCHAR#),
+				'0',
+				#userId:VARCHAR#
+			)
+	</insert>
+</sqlMap>

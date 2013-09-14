@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>	
+	<!-- HandlerMapping -->
+	<bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/login.frog">indexController</prop>
+				<prop key="/bbsList.frog">indexController</prop>
+				<prop key="/bbsView.frog">indexController</prop>
+				<prop key="/bbsWriteForm.frog">indexController</prop>
+				<prop key="/bbsWrite.frog">indexController</prop>
+				<prop key="/bbsModifyForm.frog">indexController</prop>
+				<prop key="/bbsModify.frog">indexController</prop>
+				<prop key="/bbsDeleteForm.frog">indexController</prop>
+				<prop key="/bbsDelete.frog">indexController</prop>
+				<prop key="/bbsReplyForm.frog">indexController</prop>
+				<prop key="/bbsReply.frog">indexController</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- Controller -->
+	<bean id="indexController" class="frog.bbs.controller.IndexController">		
+		<property name="successView">
+			<value>bbsList</value>
+		</property>			
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>
+	</bean>
+	
+	<!-- MethodNameResolver -->
+	<bean id="methodNameResolver" class="org.springframework.web.servlet.mvc.multiaction.PropertiesMethodNameResolver">
+		<property name="mappings">
+			<props>
+				<!-- 로그인 -->
+				<prop key="/login.frog">login</prop>
+				<!-- 게시글 리스트 -->
+				<prop key="/bbsList.frog">bbsList</prop>
+				<!-- 게시글 상세보기 -->
+				<prop key="/bbsView.frog">bbsView</prop>
+				<!-- 글쓰기 폼 로드-->
+				<prop key="/bbsWriteForm.frog">bbsWriteForm</prop>
+				<!-- 글쓰기 -->
+				<prop key="/bbsWrite.frog">bbsWriteForm</prop>
+				<!-- 글 수정 폼 로드 -->
+				<prop key="/bbsModifyForm.frog">bbsModifyForm</prop>
+				<!-- 글 수정 -->
+				<prop key="/bbsModify.frog">bbsModify</prop>
+				<!-- 글 삭제 폼 로드 -->
+				<prop key="/bbsDeleteForm.frog">bbsDeleteForm</prop>
+				<!-- 글 삭제 -->
+				<prop key="/bbsDelete.frog">bbsDelete</prop>
+				<!-- 답변 쓰기 폼 로드 -->
+				<prop key="/bbsReplyForm.frog">bbsReplyForm</prop>
+				<!-- 답변 쓰기 -->
+				<prop key="/bbsReply.frog">bbsReply</prop>
+			</props>
+		</property>
+	</bean>
+	
+	<!-- 로그인 -->
+	<bean id="login" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>	
+	</bean>
+	
+	<!-- 게시글 리스트 -->
+	<bean id="bbsList" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>	
+	</bean>
+	
+	<!-- 게시글 상세 보기 -->
+	<bean id="bbsView" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>
+	</bean>
+	<!-- 글쓰기 폼 로드 -->
+	<bean id="bbsWriteForm" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>
+	</bean>
+	<!-- 글쓰기 -->
+	<bean id="bbsWrite" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>
+		<property name="successView" value="redirect:/bbsList.frog" />
+	</bean>
+	<!-- 글 수정 폼 로드 -->
+	<bean id="bbsModifyForm" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>	
+	</bean>
+	<!-- 글 수정 -->
+	<bean id="bbsModify" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>	
+	</bean>
+	<!-- 글 삭제 폼 로드 -->
+	<bean id="bbsDeleteForm" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>
+	</bean>
+	<!-- 글 삭제 -->
+	<bean id="bbsDelete" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>
+	</bean>
+	<!-- 답변 쓰기 폼 로드 -->
+	<bean id="bbsReplyForm" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>
+	</bean>
+	<!-- 답변 쓰기 -->
+	<bean id="bbsReply" class="frog.bbs.controller.IndexController">
+		<property name="methodNameResolver">
+			<ref bean="methodNameResolver"/>
+		</property>
+		<property name="bbsService">
+			<ref bean="bbsService"/>
+		</property>
+	</bean>
+	
+	<!-- ViewResolver -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass">
+			<value>org.springframework.web.servlet.view.JstlView</value>
+		</property>
+		<property name="prefix"><value>/jsp/</value></property>
+		<property name="suffix"><value>.jsp</value></property>
+	</bean>
+	
+	<bean id="bbs" class="frog.bbs.domain.Bbs"/>
+	<bean id="bbsService" class="frog.bbs.service.BbsServiceImpl">
+	  
+	    
+	</bean>
+</beans>

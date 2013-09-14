@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="TestSpring">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <dependent-module archiveName="commons-digester.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-digester/commons-digester">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="aspectjweaver.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/aspectjweaver/aspectjweaver">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="saxon8-dom.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/saxon8-dom/saxon8-dom">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-fileupload-1.2.1.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-fileupload-1.2.1/commons-fileupload-1.2.1">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-pool.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-pool/commons-pool">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="standard.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/standard/standard">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="mysql-connector-java-3.2.0-alpha-bin.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/mysql-connector-java-3.2.0-alpha-bin/mysql-connector-java-3.2.0-alpha-bin">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jstl.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/jstl/jstl">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ojdbc5.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/ojdbc5/ojdbc5">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="spring-aspects.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/spring-aspects/spring-aspects">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="cglib-nodep-2.1_3.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/cglib-nodep-2.1_3/cglib-nodep-2.1_3">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="spring-webmvc.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/spring-webmvc/spring-webmvc">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="spring.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/spring/spring">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-dbcp.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-dbcp/commons-dbcp">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="jdom.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/jdom/jdom">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="aspectjrt.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/aspectjrt/aspectjrt">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-io-1.4.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-io-1.4/commons-io-1.4">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-beanutils.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-beanutils/commons-beanutils">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="ibatis-2.3.0.677.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/ibatis-2.3.0.677/ibatis-2.3.0.677">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="servlet-api.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/servlet-api/servlet-api">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="commons-logging.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/commons-logging/commons-logging">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="log4j-1.2.14.jar" deploy-path="/WEB-INF/lib/" handle="module:/resource/log4j-1.2.14/log4j-1.2.14">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="TestSpring"/>
+        <property name="java-output-path" value="/TestSpring/build/classes"/>
+    </wb-module>
+</project-modules>
